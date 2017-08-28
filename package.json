@@ -1,7 +1,7 @@
 {
-  "name": "gitdown",
+  "name": "flymark",
   "version": "1.0.0",
-  "description": "Github hosted markdown files to html as a service",
+  "description": "Convert Github hosted markdown files to html on the fly",
   "main": "index.js",
   "scripts": {
     "start": "micro"
