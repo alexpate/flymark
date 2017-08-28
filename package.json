@@ -1,0 +1,21 @@
+{
+  "name": "gitdown",
+  "version": "1.0.0",
+  "description": "Github hosted markdown files to html as a service",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro"
+  },
+  "author": "Alex Pate",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "graphql-request": "^1.3.4",
+    "micro": "^8.0.3",
+    "node-fetch": "^1.7.2",
+    "showdown": "^1.7.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.6.0"
+  }
+}
