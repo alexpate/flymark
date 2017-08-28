@@ -42,7 +42,7 @@ module.exports = async function(req, res) {
       if (entry.name.endsWith('.md')) {
         returned['data'].push({
           name: entry.name,
-          content: entry.object.text,
+          content: converter.makeHtml(entry.object.text),
         });
       }
     });
