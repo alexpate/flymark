@@ -9,7 +9,7 @@ Flymark is built using [micro](https://github.com/zeit/micro) and hosted on [now
 ## How to use
 Make a request with the name of the owner and repo:
 ```
-https://flymark.ap.codes/{username}/{repo}/
+https://flymark.alexpate.uk/{username}/{repo}/
 ```
 
 This will return a JSON object with a `data` array of converted markdown files from the repo:
