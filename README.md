@@ -14,7 +14,7 @@ https://flymark.ap.codes/{username}/{repo}/
 
 This will return a JSON object with a `data` array of converted markdown files from the repo:
 
-```json
+```javascript
 {
   updated_at: "2017-08-28T19:16:17.295Z",
   data: [
