@@ -1,7 +1,5 @@
 'use strict';
 
-require('dotenv').config();
-
 const fetch = require('node-fetch');
 const showdown = require('showdown');
 const url = require('url');
