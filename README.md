@@ -6,6 +6,11 @@ Flymark is built using [micro](https://github.com/zeit/micro) and hosted on [now
 
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/alexpate/flymark&env=GITHUB_TOKEN)
 
+## Example
+The converted contents of [this repo](https://github.com/alexpate/flymark-example) can be accessed here:
+
+**[https://flymark.now.sh/alexpate/flymark-example](https://flymark.now.sh/alexpate/flymark-example)**
+
 ## How to use
 Make a request with the name of the owner and repo:
 ```
