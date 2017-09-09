@@ -1,6 +1,5 @@
 'use strict';
 
-const fetch = require('node-fetch');
 const {send} = require('micro');
 const showdown = require('showdown');
 const url = require('url');
