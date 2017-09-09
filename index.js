@@ -5,8 +5,9 @@ const {send} = require('micro');
 const showdown = require('showdown');
 const url = require('url');
 const {GraphQLClient} = require('graphql-request');
-const converter = new showdown.Converter();
+const frontmatter = require('front-matter');
 
+const converter = new showdown.Converter();
 const client = new GraphQLClient('https://api.github.com/graphql', {
   headers: {
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -50,16 +51,35 @@ module.exports = async function(req, res) {
     data: [],
   };
 
-  await client.request(query).then(data => {
-    data.repository.object.entries.map(entry => {
-      if (entry.name.endsWith('.md')) {
-        returned['data'].push({
-          name: entry.name,
-          content: converter.makeHtml(entry.object.text),
-        });
-      }
+  await client
+    .request(query)
+    .then(data => {
+      data.repository.object.entries.map(entry => {
+        if (entry.name.endsWith('.md')) {
+          const fm = frontmatter(entry.object.text);
+          returned['data'].push({
+            content: converter.makeHtml(fm.body),
+            meta: {
+              name: entry.name,
+              ...fm.attributes,
+            },
+          });
+        }
+      });
+    })
+    .catch(error => {
+      const errorCode =
+        error.response.errors[0].type === 'NOT_FOUND' ? 404 : 500;
+
+      const errorMessage = error.response.errors[0].message
+        ? error.response.errors[0].message
+        : 'Sorry, something went wrong';
+
+      return send(res, errorCode, {
+        status: errorCode,
+        message: errorMessage,
+      });
     });
-  });
 
   send(res, 200, returned);
 };
